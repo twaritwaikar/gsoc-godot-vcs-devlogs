@@ -57,3 +57,5 @@ Although we will be focusing only on Git for the duration of this year's GSoC, w
 # Coming up next
 
 For the remaining of the coding period, I will be focusing on getting data from Git displayed in the editor, in different forms of commits, diffs, staging areas, and initialisation of Git dotfiles, to name a few. Since one of the long term goals is to keep the API completely VCS nature agnostic, I will also be paying attention to the design I will be using in the future to create the VCS API. In the end, we will be putting the entire integration in a GDNative plugin so as to provide a plug-and-play-like experience with the Git interaction implementation.
+
+You can also have a look at my personal tracking tool I have [here](https://github.com/IronicallySerious/gsoc-godot-vcs-devlogs) to have a deeper look into what all decisions are going into realising this integration.
