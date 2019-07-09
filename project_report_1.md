@@ -46,13 +46,11 @@ Our target for minimally complete support is focused on Git currently. By the en
 
 We plan to split the API into two when the time comes to implement a centralised VCS. This is a development style decision amongst many others as suggested by my mentors, Groud and jahd, so that we make as much progress as we can without worrying about a problem that will only come once in the future. 
 
-# Why is it 'agnostic'?
-
-The main reason why this API needs to cater to all VCSs at once is that we cannot expect our users to use only the VCSs specified by us. We should theoretically support all VCSs out there on the internet so that integrating them into Godot is much easier by just implementing an API correctly and not worrying about how the data should be displayed in the editor.
-
 # Which VCSs are planned for support?
 
 Although we will be focusing only on Git for the duration of this year's GSoC, we also recognise that Perforce and SVN are also some widely used VCS candidates for future support.
+
+We should theoretically support all publically available VCSs so that integrating them into Godot is much easier by just implementing an API correctly and not worrying about how the data should be displayed in the editor.
 
 # Coming up next
 
