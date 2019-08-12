@@ -9,7 +9,7 @@ Repositories:
 * Git API GDNative Plugin: https://github.com/IronicallySerious/godot-git-plugin
 
 # Re-cap from Progress report #1
-The version control systems integration proposes to add new UI to the editor which lets the user commit, stage, and view file differences from the last version and the current state of the file, in a presentable manner which helps improve the workflow of the user using the editor in terms of managing version control.
+The version control systems integration proposes to add new UI to the editor which lets the user commit, stage, and view file differences from the last version and the current state of the file, in a presentable manner which helps improve the workflow of the user using the editor in terms of managing versions of the source code.
 
 The integration mainly required 3 distinct verticals:
 
@@ -17,12 +17,12 @@ The integration mainly required 3 distinct verticals:
 * An interface/API for the Godot editor to extract all VCS metadata from.
 * An implementation of the VCS interface for any of the popular VCSs in use.
 
-Out of these, only the first and the second verticals are planned to be merged into Godot master and the third vertical will be kept in a separate repository. The third vertical is a GDNative Plugin, (referred to as 'addon' further).
+Out of these, only the first and the second verticals are planned to be merged into Godot master and the third vertical will be kept in a separate repository. The third vertical is a GDNative Plugin, (referred to as 'addon' further) that implements the VCS interface for interacting with Git.
 
-Keeping the implementation separated from the interface helps us to create different behaviours of the VCS interface depending on what VCS is at use in the project. I have worked on the Git implementation as a part of GSoC 2019 and for any of the other VCSs, we are depending upon future work by fellow contributors. 
+Keeping the implementation separated from the interface helps us to create different behaviours of the VCS interface depending on what VCS is at use in the project. I have worked on the Git implementation as a part of GSoC 2019 and for any of the other VCSs, we are depending upon future work by fellow contributors.
 
 # Complications faced since Progress report #1
-My mentors, Groud and jahd, and I realised the kind of architecture that we were hoping to accomplish was unsuitable for the kind of functionality that the existing engine API has. I have tried to summarise my entire research surrounding the topic of creating a GDNative addon that extends an API that is called to from within the editor in a devlog post present [here](https://github.com/IronicallySerious/gsoc-godot-vcs-devlogs/blob/master/2019-8-2.md). 
+My mentors, Groud and jahd, and I realised the kind of architecture that we were hoping to accomplish was unsuitable for the kind of functionality that the existing engine API has. I have tried to summarise my entire research surrounding the topic of creating a GDNative addon that extends an API which is called to from within the editor, in a devlog post present [here](https://github.com/IronicallySerious/gsoc-godot-vcs-devlogs/blob/master/2019-8-2.md). 
 
 You can also have a look at the [predecessor of the above-mentioned devlog](https://github.com/IronicallySerious/gsoc-godot-vcs-devlogs/blob/master/2019-7-08.md) to know more about what different types of complications we faced while designing the architecture for this sort of an involvement between the editor and the GDNative addons.
 
@@ -54,21 +54,19 @@ The next major UI element that the Version Control Editor Plugin provides is the
 The left side will be showing the version of the file in the previous commit, and the right side will be showing the newer changes for the file. The panel UI will remain, however, the logic which displays the difference contents is in works.
 
 # 2. Editor VCS Interface
-As explained earlier, the engine editor is theoretically not allowed to even know the name of the version control system that is in use by the user. This means the editor needs to consult an API that extracts all such data from the GDNative based VCS addons.
+As explained earlier, the engine editor is theoretically not allowed to even know the name of the version control system that is in use. This means that the editor needs to consult an API that extracts all such data from the GDNative based VCS addons available to the engine.
 
 This interface is functionally complete. It currently defines all methods that the editor requires, which act as proxies to the methods defined in the GDNative addon. Thus, a function like `get_vcs_name()` would reply with a "Git" response, which has essentially originated from the GDNative addon.
 
-The proxy architecture in play here has particularly helped us to create an API which does not require the implementation addon to implement the entire variety of methods defined in the API. The addon can accomplish far less and still provide enough data for the editor to correctly display the data extracted from the VCS. 
+The proxy architecture in play here has particularly helped us to create an API which does not require the implementation addon to implement the entire variety of methods defined in the API. The addon can accomplish far less and still provide enough data for the editor to correctly display the data extracted by the GDNative addon. 
 
 # 3. GDNative based Git Addon
-[libgit2](https://libgit2.org) is a portable, pure C implementation of the Git core methods provided as a linkable library with a solid API, allowing to build Git functionality into your application
-
-We are using [libgit2](https://libgit2.org), which is a C library best described by the libgit2 developers themselves at [their Github project](https://github.com/libgit2/libgit2) as follows:
+We are using [libgit2](https://libgit2.org), which is a C library is described by the libgit2 developers themselves at [their Github project](https://github.com/libgit2/libgit2):
 > libgit2 is a portable, pure C implementation of the Git core methods provided as a linkable library with a solid API, allowing to build Git functionality into your application
 
 Since it is a C implementation, we have successfully linked libgit2 to the GDNative C++ bindings along with our addon logic for extraction of Git metadata as well as repository data. The architecture being followed to call into libgit2 has been explained in the devlog that I mentioned in the previous section.
 
-So far, we can replicate Git commands like `git init`, `git commit`, `git add`, and `git diff` with libgit2 the help of their extremely thorough [user guides](https://libgit2.org/docs/guides/101-samples/).
+So far, with the help of libgit2 we have been able to replicate the functioning of Git commands like `git init`, `git commit`, `git add`, and `git diff` with libgit2 the help of their extremely thorough [user guides](https://libgit2.org/docs/guides/101-samples/).
 
 # Closing Notes
-I am glad to be working on this project idea of mine and seeing it in its close-to-mature form as it is currently is a delight. I plan to finish the remaining bits by this weekend and deliver some instructions to use this feature in the next report.
+I am glad to be working on this project idea and seeing it in its close-to-mature form as it is currently is a delight. I plan to finish the remaining bits in the next week and deliver some instructions to use this feature in the next report.
