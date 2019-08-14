@@ -47,7 +47,7 @@ You may notice in the panel above that the 'Refresh' button has recently been cl
 
 Upon opening this tree, you shall see a list of all the new files that have been added to the Git repository. Since the demo project doesn't come with a pre-initialised Git repository, all the files of the project are currently recognised as newly created files. The checkboxes shall be indicative of whether a file will be added to the stage or not. This is similar to selecting what input we need to provide the `git add` command.
 
-The next major UI element that the Version Control Editor Plugin provides is the Version Control dock which will most likely be placed at amongst the bottom docks likewise:
+The next major UI element that the Version Control Editor Plugin provides is the Version Control dock which will likely be placed amongst the bottom docks likewise:
 
 ![](/images/007.png)
 
