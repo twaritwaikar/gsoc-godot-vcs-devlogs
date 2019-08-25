@@ -31,9 +31,9 @@ When the project loads up, you are greeted with the Godot editor that you know a
 
 ![](/images/009.png)
 
-_If you are not able to see a `GitAPI` option then this means that you don't have the addon binaries present in your project folder.
+_If you are not able to see a `GitAPI` option then this means that you don't have the addon binaries present in your project folder._
 
-3. Open the `Commit` that you may see alongside the `Inspector` and `Node` tabs. At first, you will see that every file in the project folder is counted as a new addition to the repository since we have started from a VCS-less project. If you already have Git running on your project then the addon should be able to just use your existing repository. 
+3. Open the `Commit` tab that you may see alongside the `Inspector` and `Node` tabs. At first, you will see that every file in the project folder is counted as a new addition to the repository since we have started from a VCS-less project. If you already have Git running on your project then the addon should be able to just use your existing repository. 
 
 ![](/images/010.png)
 
@@ -53,13 +53,13 @@ Alternatively, if you would like to not stage `default_env.tres` (for example) t
 
 This way, `default_env.tres` will not get committed in the next version.
 
-6. Add a nice commit message and click `Commit`.
+6. Add a nice commit message and click `Commit Changes`.
 
 ![](/images/013.png)
 
 You may also notice that the number of staged files is also reported. This is for your utility where you may like to confirm if you are committing the correct project files.
 
-7. After clicking commit you can start working on the next version of your project!
+7. After clicking `Commit Changes` you can start working on the next version of your project!
 
 # Useful features
 
