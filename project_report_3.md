@@ -61,6 +61,8 @@ You may also notice that the number of staged files is also reported. This is fo
 
 7. After clicking `Commit Changes` you can start working on the next version of your project!
 
+8. When you are done, you can choose to shut down the VCS API with the selected addon by selecting `Project` > `Version Control` > `Shut Down Version Control`. This will take away the VCS Integration related GUI and return you to the normal state of the editor without the VCS integration.
+
 # Useful features
 
 ## Stage Status
