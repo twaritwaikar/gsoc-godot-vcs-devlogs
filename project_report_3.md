@@ -14,7 +14,7 @@ The Version Control Systems Integration project introduces VCS (short for 'Versi
 
 # Installation
 
-1. Download the [Godot Git addon GDNative plugin](https://github.com/IronicallySerious/godot-git-plugin/releases/tag/v1.0-alpha). Extract the contents in the root of your Godot project folder.
+1. Download the latest release from the [Git addon GDNative plugin repository](https://github.com/IronicallySerious/godot-git-plugin/releases). Extract the contents in the root of your Godot project folder.
 2. Open the Godot project using the Godot Project manager. P.S. Make sure you use [the feature branch](https://github.com/IronicallySerious/godot/tree/add-vcs-integration) that has the VCS integration to test this feature.
 
 That is it! This is the courtesy of how we have used GDNative and the existence of GDNative singleton libraries that are instantiated at runtime.
